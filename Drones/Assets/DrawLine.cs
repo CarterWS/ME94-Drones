@@ -43,10 +43,10 @@ public class DrawLine : MonoBehaviour
             linePos[0] = drone.transform.position;
 
             //make sure the position isn't the one we just deleted
-            if (waypoint.transform.position != badPos && selectedWaypoint)
+            if ((waypoint.transform.position - badPos).magnitude > epsilon && selectedWaypoint)
             {
                 //if the current position isn't the last one, add it
-                if (linePos[numPos - 1] != waypoint.transform.position)
+                if ((linePos[numPos - 1] - waypoint.transform.position).magnitude > epsilon)
                 {
                     linePos[numPos] = waypoint.transform.position;
                     numPos = numPos + 1;
@@ -78,14 +78,15 @@ public class DrawLine : MonoBehaviour
                 }
             }
 
-            if (numPos > 1)
+            if (numPos > 0)
             {
-                //actually draw the line
+                //Actually draw the line
                 line.positionCount = numPos;
                 line.SetPositions(linePos);
             }
             //Make it so that the drone knows where to go next
             droneTarget = linePos[1];
+            Debug.Log(numPos);
         }
 
         //Controller

@@ -13,7 +13,7 @@ public class DroneMove : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        drone.Warp(startPos);
+
     }
 
     // Update is called once per frame
