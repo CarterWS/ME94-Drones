@@ -19,6 +19,7 @@ public class DroneMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Get the drone target from DrawLine and set that as the destination
         target = waypoint.GetComponent<DrawLine>().droneTarget;
         drone.SetDestination(target);
     }

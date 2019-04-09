@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class DrawLine : MonoBehaviour
 {
+    //Initializing variables that will be used in the code
     public GameObject waypoint;
     public LineRenderer line;
     public GameObject drone;
@@ -13,24 +14,27 @@ public class DrawLine : MonoBehaviour
     private int numPos = 1;
     private float epsilon = 0.3f;
     private string mode;
+    public bool selectedWaypoint;
+
+    //Controller only
     private int[] lastSavedPos = new int[1000];
     private float[] controls;
     private int savePos = 1;
     private bool APress, BPress;
-    public bool selectedWaypoint;
 
-    // Start is called before the first frame update
+
+    //Start is called before the first frame update
     void Start()
     {
-        //get the line renderer
+        //Get the line renderer
         line = GetComponent<LineRenderer>();
 
-        //last saved position is last time the A button was pressed
+        //Last saved position is last time the A button was pressed
         lastSavedPos[0] = 0;
     }
 
 
-    // Update is called once per frame
+    //Update is called once per frame
     void FixedUpdate()
     {
         //Gets what mode we're using
@@ -39,20 +43,20 @@ public class DrawLine : MonoBehaviour
         //Mouse
         if (mode.ToLower() == "mouse")
         {
-            //first position is that of the drone
+            //First position is that of the drone
             linePos[0] = drone.transform.position;
 
-            //make sure the position isn't the one we just deleted
+            //Make sure the position isn't the one we just deleted
             if ((waypoint.transform.position - badPos).magnitude > epsilon && selectedWaypoint)
             {
-                //if the current position isn't the last one, add it
+                //If the current position isn't the last one, add it
                 if ((linePos[numPos - 1] - waypoint.transform.position).magnitude > epsilon)
                 {
                     linePos[numPos] = waypoint.transform.position;
                     numPos = numPos + 1;
                 }
             }
-            //if we hit escape, delete the last line that was made and make 
+            //If we hit escape, delete the last line that was made and make 
             //the position we were at the badPos (deleted position)
             if (Input.GetKeyDown(KeyCode.Escape) && selectedWaypoint)
             {
@@ -64,7 +68,7 @@ public class DrawLine : MonoBehaviour
                 numPos = numPos - 1; 
             }
 
-            //if the drone gets close enough to its next position, remove the
+            //If the drone gets close enough to its next position, remove the
             //next position from the line
             if ((linePos[0] - linePos[1]).magnitude < epsilon)
             {
@@ -78,22 +82,21 @@ public class DrawLine : MonoBehaviour
                 }
             }
 
+            //Actually draw the line
             if (numPos > 0)
             {
-                //Actually draw the line
                 line.positionCount = numPos;
                 line.SetPositions(linePos);
             }
             //Make it so that the drone knows where to go next
             droneTarget = linePos[1];
-            Debug.Log(numPos);
         }
 
         //Controller
         if(mode.ToLower() == "controller")
         {
 
-            //get the controller inputs
+            //Get the controller inputs
             controls = GameObject.Find("Sorter").GetComponent<Sorter>().xbox;
             linePos[0] = drone.transform.position;
 
@@ -103,17 +106,17 @@ public class DrawLine : MonoBehaviour
                 numPos = numPos + 1;
             }
 
-            //if the B button is pressed
+            //If the B button is pressed
             if (controls[1] == 1)
             {
                 BPress = true;
             }
 
-            //if the B button is released delete the positions after the last
+            //If the B button is released delete the positions after the last
             //saved position and set the waypoint back to that saved position
             if (BPress && controls[1] == 0)
             {
-                //for if someone didn't move the waypoint and hit B again,
+                //For if someone didn't move the waypoint and hit B again,
                 //delete the segment before
                 if (numPos == lastSavedPos[savePos])
                 {
@@ -129,13 +132,13 @@ public class DrawLine : MonoBehaviour
                 BPress = false;
             }
 
-            //if the A button is pressed
+            //If the A button is pressed
             if (controls[0] == 1)
             {
                 APress = true;
             }
 
-            //if the A button is released add that position to the saved position
+            //If the A button is released add that position to the saved position
             if (APress && controls[0] == 1)
             {
                 lastSavedPos[savePos] = numPos;
@@ -143,7 +146,7 @@ public class DrawLine : MonoBehaviour
                 APress = false;
             }
 
-            //if the drone gets close enough to its next position, remove the
+            //If the drone gets close enough to its next position, remove the
             //next position from the line
             if ((linePos[0] - linePos[1]).magnitude < epsilon)
             {
@@ -153,6 +156,8 @@ public class DrawLine : MonoBehaviour
                 }
                 numPos = numPos - 1;
             }
+
+            //Draw the line
             line.positionCount = numPos;
             line.SetPositions(linePos);
         }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Sorter : MonoBehaviour
 {
-
+    //Variables
     HelloClient client;
     public float[] locations;
     public float[] xbox;
@@ -21,8 +21,12 @@ public class Sorter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Gets the client and the message sent
         client = GetComponent<HelloClient>();
         m = client._helloRequester.sentMessage;
+
+        //Makes sure messages are actually being sent, and then sorts the
+        //message appropriately to what it corresponds to
         if (m != "null")
         {
             if(i%len < 5)

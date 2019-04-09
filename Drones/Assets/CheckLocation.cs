@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CheckLocation : MonoBehaviour
 {
+    //Variables
     private float[] locations;
     float x;
     float y = 0.75f;
@@ -20,6 +21,8 @@ public class CheckLocation : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        //CURRENTLY NOT USED
+        //Could check locations based on marvelmind data
         locations = GameObject.Find("Sorter").GetComponent<Sorter>().locations;
         if (locations[0] != 0.0f)
         {

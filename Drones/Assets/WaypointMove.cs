@@ -3,6 +3,7 @@ using UnityEngine.AI;
 
 public class WaypointMove : MonoBehaviour
 {
+    //Initialize variables
     public Camera cam;
     public NavMeshAgent agent;
     public Rigidbody rb;
@@ -11,6 +12,8 @@ public class WaypointMove : MonoBehaviour
     private float x,y,z;
     public float speed;
     RaycastHit hit;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +23,7 @@ public class WaypointMove : MonoBehaviour
     //Update is called once per frame
     void Update()
     {
+        //If the mode is mouse, move the waypoint to where the user clicks
         if(mode.ToLower() == "mouse")
         {
             rb.velocity = new Vector3(0, 0, 0);
@@ -29,11 +33,12 @@ public class WaypointMove : MonoBehaviour
 
                 if (Physics.Raycast(ray, out hit))
                 {
-                    //agent.SetDestination(hit.point);
                     rb.transform.position = hit.point;
                 }
             }
         }
+
+        //If the mode is controller, move at a certain speed based on joystick inputs
         if(mode.ToLower() == "controller")
         {
             agent.ResetPath();
