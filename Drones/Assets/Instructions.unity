@@ -413,8 +413,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 25, y: 150}
-  m_SizeDelta: {x: 750, y: 50}
+  m_AnchoredPosition: {x: 15, y: 150}
+  m_SizeDelta: {x: 725, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1935786350
 MonoBehaviour:
@@ -436,13 +436,13 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: "Instructions:\n\n* Alternate between mouse and controller inputs by going
-    into EACH waypoint object and typing in either \u201Cmouse\u201D or \u201Ccontroller\u201D\n\r\n*
-    For mouse: \r\n\tClick locations where you want the drone to pass through\r\n\tPress
-    the escape key to undo a line\r\n\tPress the tab key to switch between waypoints\r\n*
-    For controller:\r\n\tMove joystick to steer each waypoint\r\n\tPress the A button
-    to save the path up until that point\r\n\tPress the B button to delete back until
-    the previous save point\n\nPress escape to go back"
+  m_text: "Instructions:\n\n* Alternate between mouse and controller inputs by resetting
+    and selecting the different mode at the start\n\r\n* For mouse: \r\n\tClick locations
+    where you want the drone to pass through\r\n\tPress the escape key to undo a line\r\n\tPress
+    the tab key to switch between waypoints\r\n* For controller:\r\n\tMove joystick
+    to steer each waypoint\r\n\tPress the A button to save the path up until that
+    point\r\n\tPress the B button to delete back until the previous save point\n\nPress
+    escape to go back to the interface"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -511,7 +511,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1935786350}
-    characterCount: 510
+    characterCount: 506
     spriteCount: 0
     spaceCount: 97
     wordCount: 85
