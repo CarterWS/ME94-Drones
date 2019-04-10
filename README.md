@@ -4,7 +4,7 @@
 
 This github is design for two computers, one running the marvelmind system and taking controller inputs, and the other runnning the unity simulation. The marvelmind computer should have the client.py file running. The unity computer should have the unity simulation as well as the server.py file running. 
 
-The code for all of this is in the code file, and the unity project is the folder titled "Drones"
+The code for all of this is in the code folder, and the unity project is the folder titled "Drones"
 
 The IPs of each computer can be found by System Preferences/Network on Mac and by ........ on Linux
 
