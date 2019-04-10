@@ -1,0 +1,10 @@
+* Alternate between mouse and controller inputs by going into EACH waypoint object and typing in either “mouse” or “controller”
+
+* For mouse: 
+	Click locations where you want the drone to pass through
+	Press the escape key to undo a line
+	Press the tab key to switch between waypoints
+* For controller:
+	Move joystick to steer each waypoint
+	Press the A button to save the path up until that point
+	Press the B button to delete back until the previous save point
