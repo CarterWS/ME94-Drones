@@ -11,7 +11,7 @@ public class ChooseMode : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        modeChooser = GameObject.Find("ChooseModeText");
     }
 
     // Update is called once per frame
