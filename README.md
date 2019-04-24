@@ -2,6 +2,8 @@
 
 # Please read before attempting to use.
 
+This project was created for an undergraduate independent research class at Tufts University.
+
 This github is design for two computers connected on the same wireless network as each other and as the AR Parrot 2.0 Drones. One computer is running the marvelmind system and taking controller inputs, and the other is runnning the unity simulation. The marvelmind computer should have the client.py file running. The unity computer should have the unity simulation as well as the server.py file running.
 
 The code for all of this is in the code folder, and the unity project is the folder titled "Drones"
