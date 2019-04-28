@@ -7,12 +7,13 @@ import time
 import zmq
 from socket import *
 
-host = "" #change this to the IP of the target computer
+host = gethostbyname('0.0.0.0'); #change this to the IP of the target computer
 port = 13001
 buf = 1024
 
 i = 0
-length = 17;
+length = 17
+int_data = 0
 #a = [0] * length
 
 #Linux socket
@@ -35,6 +36,16 @@ while True:
     #print i #This is an easy debug tool to see if messages are actually being transmitted
     
     #Sends the data to the unity simulation
+    if((i%length) < 11):
+        int_data = int(data)
+        int_data = int_data + ((i%17) * 10)
+        data = str(int_data)
+
+    elif((i%length) >= 11):
+        float_data = float(data)
+        float_data = float_data + ((i%17) * 10)
+        data = str(float_data)
+
     msg = socket.recv()
     socket.send(data)
     i = i + 1
