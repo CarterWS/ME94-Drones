@@ -12,7 +12,7 @@ public class HelloRequester : RunAbleThread
 {
     public string sentMessage = "null";
     /// <summary>
-    ///     Request Hello message to server and receive message back. Do it 10 times.
+    ///     Request Hello message to server and receive message back.
     ///     Stop requesting when Running=false.
     /// </summary>
     protected override void Run()
@@ -24,7 +24,6 @@ public class HelloRequester : RunAbleThread
 
             while(Running)
             {
-                Debug.Log("Sending Hello");
                 client.SendFrame("Hello");
                 // ReceiveFrameString() blocks the thread until you receive the string, but TryReceiveFrameString()
                 // do not block the thread, you can try commenting one and see what the other does, try to reason why

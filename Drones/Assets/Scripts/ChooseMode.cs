@@ -21,13 +21,14 @@ public class ChooseMode : MonoBehaviour
         {
             waypoint1.GetComponent<WaypointMove>().mode = "controller";
             waypoint2.GetComponent<WaypointMove>().mode = "controller";
-            modeChooser.SetActive(false);
+            modeChooser.transform.position = new Vector3(1000, 1000, 1000);
         }
-        else if (Input.GetKey(KeyCode.M))
+
+        if (Input.GetKey(KeyCode.M))
         {
             waypoint1.GetComponent<WaypointMove>().mode = "mouse";
             waypoint2.GetComponent<WaypointMove>().mode = "mouse";
-            modeChooser.SetActive(false);
+            modeChooser.transform.position = new Vector3(1000, 1000, 1000);
         }
     }
 }

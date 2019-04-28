@@ -44,9 +44,8 @@ public class WaypointMove : MonoBehaviour
             agent.ResetPath();
             controls = GameObject.Find("Sorter").GetComponent<Sorter>().xbox;
             x = controls[8] * speed;
-            y = controls[9] * speed;
-            z = controls[10] * speed;
-            rb.velocity = new Vector3(x,y,z);
+            z = controls[9] * speed;
+            rb.velocity = new Vector3(x,0,z);
         }
     }
 }

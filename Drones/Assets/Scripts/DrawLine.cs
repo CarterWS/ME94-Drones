@@ -31,6 +31,9 @@ public class DrawLine : MonoBehaviour
 
         //Last saved position is last time the A button was pressed
         lastSavedPos[0] = 0;
+
+        APress = false;
+        BPress = false;
     }
 
 
@@ -100,21 +103,21 @@ public class DrawLine : MonoBehaviour
             controls = GameObject.Find("Sorter").GetComponent<Sorter>().xbox;
             linePos[0] = drone.transform.position;
 
-            if (linePos[numPos - 1] != waypoint.transform.position)
+            if (linePos[numPos - 1] != waypoint.transform.position && selectedWaypoint)
             {
                 linePos[numPos] = waypoint.transform.position;
                 numPos = numPos + 1;
             }
 
             //If the B button is pressed
-            if (controls[1] == 1)
+            if (controls[1] == 1 && selectedWaypoint)
             {
                 BPress = true;
             }
 
             //If the B button is released delete the positions after the last
             //saved position and set the waypoint back to that saved position
-            if (BPress && controls[1] == 0)
+            if (BPress && controls[1] == 0 && selectedWaypoint)
             {
                 //For if someone didn't move the waypoint and hit B again,
                 //delete the segment before
@@ -133,13 +136,13 @@ public class DrawLine : MonoBehaviour
             }
 
             //If the A button is pressed
-            if (controls[0] == 1)
+            if (controls[0] == 1 && selectedWaypoint)
             {
                 APress = true;
             }
 
             //If the A button is released add that position to the saved position
-            if (APress && controls[0] == 1)
+            if (APress && controls[0] == 1 && selectedWaypoint)
             {
                 lastSavedPos[savePos] = numPos;
                 savePos = savePos + 1;
